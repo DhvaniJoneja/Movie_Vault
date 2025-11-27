@@ -367,7 +367,6 @@ elif option == "Genre popularity vs profit":
         if df.empty:
             st.write("No data found.")
         else:
-            # scatter (pop vs profit)
             fig1, ax1 = plt.subplots(figsize=(10,6))
             ax1.scatter(df["Avg Popularity"], df["Avg Profit"])
             for i, g in enumerate(df["Genre"]):
@@ -377,7 +376,6 @@ elif option == "Genre popularity vs profit":
             ax1.set_title("Popularity vs Profit by Genre")
             st.pyplot(fig1)
 
-            # reliable bar chart (top 10 or top 20 by profit)
             df_top = df.sort_values("Avg Profit", ascending=False).head(20).reset_index(drop=True)
             df_top["Avg Profit (M)"] = df_top["Avg Profit"].astype(float) / 1_000_000
 
